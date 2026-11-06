@@ -108,7 +108,7 @@ fun TaskEditScreen(
 fun TaskEditScreenPreview() {
     TO_DO_ListTheme {
         TaskEditScreen(
-            task = Task(1, "Buy groceries", "Milk, eggs, bread"),
+            task = Task("1", "Buy groceries", "Milk, eggs, bread"),
             onSave = { _, _ -> }, onDelete = {}, onBack = {}
         )
     }

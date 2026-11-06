@@ -1,14 +1,14 @@
 package com.example.to_do_list.data
 
-import kotlinx.coroutines.flow.StateFlow
+import kotlinx.coroutines.flow.Flow
 
-// Where tasks are stored. Today it's in memory; later a Room implementation can replace it.
 interface TaskRepository {
-    val tasks: StateFlow<List<Task>>
+    /** Failed writes, reported here because the write functions return before the server answers. */
+    val writeErrors: Flow<Throwable>
 
-    fun get(id: Long): Task?
-    fun add(title: String, description: String): Task
-    fun update(task: Task)
-    fun toggleDone(id: Long)
-    fun delete(id: Long)
+    fun observeTasks(userId: String): Flow<List<Task>>
+    fun add(userId: String, title: String, description: String)
+    fun update(userId: String, id: String, title: String, description: String)
+    fun setDone(userId: String, id: String, done: Boolean)
+    fun delete(userId: String, id: String)
 }
