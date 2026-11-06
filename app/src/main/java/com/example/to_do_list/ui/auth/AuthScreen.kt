@@ -62,7 +62,8 @@ fun AuthScreen(
                 },
                 label = { Text("Email") },
                 singleLine = true,
-                enabled = !uiState.isLoading,
+                // readOnly, not disabled: a disabled field loses focus and the cursor jumps away.
+                readOnly = uiState.isLoading,
                 keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Email),
                 modifier = Modifier.fillMaxWidth()
             )
@@ -74,7 +75,8 @@ fun AuthScreen(
                 },
                 label = { Text("Password") },
                 singleLine = true,
-                enabled = !uiState.isLoading,
+                // readOnly, not disabled: a disabled field loses focus and the cursor jumps away.
+                readOnly = uiState.isLoading,
                 visualTransformation = PasswordVisualTransformation(),
                 keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Password),
                 modifier = Modifier.fillMaxWidth()
